@@ -8,10 +8,16 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace Mediatek86.Vue
+namespace Mediatek86.vue
 {
+    /// <summary>
+    /// Fentre d'affichage des personnels et de leurs infos
+    /// </summary>
     public partial class FrmPersonnels : Form
     {
+        /// <summary>
+        /// Construction des composants graphiques et appel des autres initialisations
+        /// </summary>
         public FrmPersonnels()
         {
             InitializeComponent();

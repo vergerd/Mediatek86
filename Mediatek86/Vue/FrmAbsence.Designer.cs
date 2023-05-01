@@ -1,5 +1,5 @@
 ﻿
-namespace Mediatek86.Vue
+namespace Mediatek86.vue
 {
     partial class FrmAbsence
     {
