@@ -46,11 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Form1.cs">
+    <Compile Include="Vue\FrmAbsence.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="Vue\FrmAbsence.Designer.cs">
+      <DependentUpon>FrmAbsence.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\FrmPersonnels.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\FrmPersonnels.Designer.cs">
+      <DependentUpon>FrmPersonnels.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\FrmAuthentification.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\FrmAuthentification.Designer.cs">
+      <DependentUpon>FrmAuthentification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Vue\FrmAjoutModifPersonnel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Vue\FrmAjoutModifPersonnel.Designer.cs">
+      <DependentUpon>FrmAjoutModifPersonnel.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -63,6 +81,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Vue\FrmAbsence.resx">
+      <DependentUpon>FrmAbsence.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\FrmAjoutModifPersonnel.resx">
+      <DependentUpon>FrmAjoutModifPersonnel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\FrmPersonnels.resx">
+      <DependentUpon>FrmPersonnels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Vue\FrmAuthentification.resx">
+      <DependentUpon>FrmAuthentification.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -79,7 +109,6 @@
   <ItemGroup>
     <Folder Include="Contoleur\" />
     <Folder Include="Modele\" />
-    <Folder Include="Vue\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
