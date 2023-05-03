@@ -60,7 +60,9 @@
   <ItemGroup>
     <Compile Include="bddmanager\Bddmanager.cs" />
     <Compile Include="contoleur\FrmAuthentificationController.cs" />
+    <Compile Include="contoleur\FrmPersonnelsController.cs" />
     <Compile Include="dal\Access.cs" />
+    <Compile Include="dal\PersonnelAccess.cs" />
     <Compile Include="dal\ResponsableAccess.cs" />
     <Compile Include="mediatek86DataSet.Designer.cs">
       <AutoGen>True</AutoGen>

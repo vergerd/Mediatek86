@@ -35,13 +35,6 @@ namespace Mediatek86.vue
             this.btnModifierPersonnel = new System.Windows.Forms.Button();
             this.btnAjouterPersonnel = new System.Windows.Forms.Button();
             this.dgvPersonnels = new System.Windows.Forms.DataGridView();
-            this.Id = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Nom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Prénom = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Telephone = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Mail = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.IdService = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Service = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.grbPersonnels.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPersonnels)).BeginInit();
             this.SuspendLayout();
@@ -98,72 +91,20 @@ namespace Mediatek86.vue
             // 
             // dgvPersonnels
             // 
+            this.dgvPersonnels.AllowUserToAddRows = false;
+            this.dgvPersonnels.AllowUserToDeleteRows = false;
+            this.dgvPersonnels.AllowUserToResizeRows = false;
             this.dgvPersonnels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPersonnels.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Id,
-            this.Nom,
-            this.Prénom,
-            this.Telephone,
-            this.Mail,
-            this.IdService,
-            this.Service});
             this.dgvPersonnels.Location = new System.Drawing.Point(6, 21);
+            this.dgvPersonnels.MultiSelect = false;
             this.dgvPersonnels.Name = "dgvPersonnels";
-            this.dgvPersonnels.RowHeadersWidth = 51;
+            this.dgvPersonnels.ReadOnly = true;
+            this.dgvPersonnels.RowHeadersVisible = false;
+            this.dgvPersonnels.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvPersonnels.RowTemplate.Height = 24;
+            this.dgvPersonnels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersonnels.Size = new System.Drawing.Size(679, 313);
             this.dgvPersonnels.TabIndex = 0;
-            // 
-            // Id
-            // 
-            this.Id.HeaderText = "Id";
-            this.Id.MinimumWidth = 6;
-            this.Id.Name = "Id";
-            this.Id.Visible = false;
-            this.Id.Width = 125;
-            // 
-            // Nom
-            // 
-            this.Nom.HeaderText = "Nom";
-            this.Nom.MinimumWidth = 6;
-            this.Nom.Name = "Nom";
-            this.Nom.Width = 125;
-            // 
-            // Prénom
-            // 
-            this.Prénom.HeaderText = "Prénom";
-            this.Prénom.MinimumWidth = 6;
-            this.Prénom.Name = "Prénom";
-            this.Prénom.Width = 125;
-            // 
-            // Telephone
-            // 
-            this.Telephone.HeaderText = "Téléphone";
-            this.Telephone.MinimumWidth = 6;
-            this.Telephone.Name = "Telephone";
-            this.Telephone.Width = 125;
-            // 
-            // Mail
-            // 
-            this.Mail.HeaderText = "Mail";
-            this.Mail.MinimumWidth = 6;
-            this.Mail.Name = "Mail";
-            this.Mail.Width = 125;
-            // 
-            // IdService
-            // 
-            this.IdService.HeaderText = "IdService";
-            this.IdService.MinimumWidth = 6;
-            this.IdService.Name = "IdService";
-            this.IdService.Visible = false;
-            this.IdService.Width = 125;
-            // 
-            // Service
-            // 
-            this.Service.HeaderText = "Service";
-            this.Service.MinimumWidth = 6;
-            this.Service.Name = "Service";
-            this.Service.Width = 125;
             // 
             // FrmPersonnels
             // 
@@ -187,12 +128,5 @@ namespace Mediatek86.vue
         private System.Windows.Forms.Button btnModifierPersonnel;
         private System.Windows.Forms.Button btnAjouterPersonnel;
         private System.Windows.Forms.DataGridView dgvPersonnels;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Id;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Nom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Prénom;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Telephone;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Mail;
-        private System.Windows.Forms.DataGridViewTextBoxColumn IdService;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Service;
     }
 }

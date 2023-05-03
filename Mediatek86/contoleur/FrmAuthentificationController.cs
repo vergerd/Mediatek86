@@ -8,7 +8,10 @@ using System.Threading.Tasks;
 
 namespace Mediatek86.contoleur
 {
-    class FrmAuthentificationController
+    /// <summary>
+    /// Controleur de FrmAUthentification
+    /// </summary>
+    public class FrmAuthentificationController
     {
         /// <summary>
         /// objet d'accès aux opérations possibles sur Responsable
@@ -22,7 +25,11 @@ namespace Mediatek86.contoleur
         {
             responsableAccess = new ResponsableAccess();
         }
-
+        /// <summary>
+        /// Vérifie l'authentification
+        /// </summary>
+        /// <param name="responsable">objet contenant les informations de connexion</param>
+        /// <returns>vrai si les informations de connexion sont correctes</returns>
         public Boolean ControleAuthentification(Responsable responsable)
         {
             return responsableAccess.ControleAuthentification(responsable);

@@ -7,7 +7,10 @@ using System.Threading.Tasks;
 
 namespace Mediatek86.dal
 {
-    class ResponsableAccess
+    /// <summary>
+    /// Classe permettant de gérer les demandes pour les reponsables
+    /// </summary>
+    public class ResponsableAccess
     {
         /// <summary>
         /// instance unique de l'accès aux données
@@ -21,7 +24,11 @@ namespace Mediatek86.dal
         {
             access = Access.GetInstance();
         }
-
+        /// <summary>
+        /// Controle si l'utilisateur à le droit de se connecter (responsable)
+        /// </summary>
+        /// <param name="responsable"></param>
+        /// <returns></returns>
         public Boolean ControleAuthentification(Responsable responsable)
         {
             if (access.Manager != null)
