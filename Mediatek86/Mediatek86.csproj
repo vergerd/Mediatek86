@@ -59,7 +59,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bddmanager\Bddmanager.cs" />
+    <Compile Include="contoleur\FrmAuthentificationController.cs" />
     <Compile Include="dal\Access.cs" />
+    <Compile Include="dal\ResponsableAccess.cs" />
     <Compile Include="mediatek86DataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -141,8 +143,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="contoleur\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -18,9 +18,10 @@ namespace Mediatek86.vue
         /// <summary>
         /// Construction des composants graphiques et appel des autres initialisations
         /// </summary>
-        public FrmPersonnels()
+        public FrmPersonnels(FrmAuthentification frmauthentification)
         {
             InitializeComponent();
+            frmauthentification.Visible = false;
         }
     }
 }

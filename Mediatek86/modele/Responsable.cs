@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Mediatek86.modele
 {
     /// <summary>
@@ -11,5 +6,13 @@ namespace Mediatek86.modele
     /// </summary>
     class Responsable
     {
+        public string Identifiant { get; }
+        public string Mdp { get; }
+
+        public Responsable(string identifiant, string mdp)
+        {
+            this.Identifiant = identifiant;
+            this.Mdp = mdp;
+        }
     }
 }

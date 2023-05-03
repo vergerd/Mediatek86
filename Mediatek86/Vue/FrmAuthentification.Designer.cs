@@ -58,30 +58,32 @@ namespace Mediatek86.vue
             // 
             this.txtIdentifiant.Location = new System.Drawing.Point(111, 6);
             this.txtIdentifiant.Name = "txtIdentifiant";
-            this.txtIdentifiant.Size = new System.Drawing.Size(215, 22);
+            this.txtIdentifiant.Size = new System.Drawing.Size(164, 22);
             this.txtIdentifiant.TabIndex = 2;
             // 
             // txtMdp
             // 
             this.txtMdp.Location = new System.Drawing.Point(111, 34);
             this.txtMdp.Name = "txtMdp";
-            this.txtMdp.Size = new System.Drawing.Size(215, 22);
+            this.txtMdp.PasswordChar = '*';
+            this.txtMdp.Size = new System.Drawing.Size(164, 22);
             this.txtMdp.TabIndex = 3;
             // 
             // btnSeConnecter
             // 
-            this.btnSeConnecter.Location = new System.Drawing.Point(225, 62);
+            this.btnSeConnecter.Location = new System.Drawing.Point(174, 68);
             this.btnSeConnecter.Name = "btnSeConnecter";
             this.btnSeConnecter.Size = new System.Drawing.Size(101, 27);
             this.btnSeConnecter.TabIndex = 4;
             this.btnSeConnecter.Text = "se connecter";
             this.btnSeConnecter.UseVisualStyleBackColor = true;
+            this.btnSeConnecter.Click += new System.EventHandler(this.btnSeConnecter_Click);
             // 
             // FrmAuthentification
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(338, 107);
+            this.ClientSize = new System.Drawing.Size(293, 107);
             this.Controls.Add(this.btnSeConnecter);
             this.Controls.Add(this.txtMdp);
             this.Controls.Add(this.txtIdentifiant);
