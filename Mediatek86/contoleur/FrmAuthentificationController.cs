@@ -14,12 +14,12 @@ namespace Mediatek86.contoleur
     public class FrmAuthentificationController
     {
         /// <summary>
-        /// objet d'accès aux opérations possibles sur Responsable
+        /// Objet d'accès aux opérations possibles sur Responsable
         /// </summary>
         private readonly ResponsableAccess responsableAccess;
 
         /// <summary>
-        /// récupère l'accès aux données
+        /// Récupère l'accès aux données
         /// </summary>
         public FrmAuthentificationController()
         {

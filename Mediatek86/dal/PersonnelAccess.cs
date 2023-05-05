@@ -58,7 +58,7 @@ namespace Mediatek86.dal
             return lesPersonnels;
         }
         /// <summary>
-        /// demande de modification d'un personnel
+        /// Demande de modification d'un personnel
         /// </summary>
         /// <param name="personnel"></param>
         public void UpdatePersonnel(Personnel personnel)
@@ -86,7 +86,7 @@ namespace Mediatek86.dal
             }
         }
         /// <summary>
-        /// demande d'ajout d'un personnel
+        /// Demande d'ajout d'un personnel
         /// </summary>
         /// <param name="personnel"></param>
         public void AddPersonnel (Personnel personnel)
@@ -101,6 +101,28 @@ namespace Mediatek86.dal
                 parameters.Add("@tel", personnel.Tel);
                 parameters.Add("@mail", personnel.Mail);
                 parameters.Add("@idservice", personnel.Service.IdService);
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
+        /// <summary>
+        /// Demande de suppresion d'un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void DelPersonnel(Personnel personnel)
+        {
+            if (access.Manager != null)
+            {
+                string req = "delete from personnel where idpersonnel = @idpersonnel;";
+                Dictionary<string, object> parameters = new Dictionary<string, object>();
+                parameters.Add("@idpersonnel", personnel.Idpersonnel);
                 try
                 {
                     access.Manager.ReqUpdate(req, parameters);

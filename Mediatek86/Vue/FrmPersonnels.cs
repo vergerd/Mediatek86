@@ -85,5 +85,26 @@ namespace Mediatek86.vue
             }
                 
         }
+        /// <summary>
+        /// demande de suppresion d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimerPersonnel_Click(object sender, EventArgs e)
+        {
+            if(dgvPersonnels.SelectedRows.Count > 0)
+            {
+                Personnel personnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
+                if (MessageBox.Show("Voulez-vous vraiment supprimer " + personnel.Nom + " "+ personnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    controller.DelPersonnel(personnel);
+                    RemplirListePersonnels();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+            }
+        }
     }
 }

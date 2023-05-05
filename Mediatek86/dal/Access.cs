@@ -9,11 +9,11 @@ namespace Mediatek86.dal
     public class Access
     {
         /// <summary>
-        /// chaine de connexion à la bdd
+        /// Chaine de connexion à la bdd
         /// </summary>
         private static readonly string connectionString = "server=localhost;user id=user_mediatek86;password=user_mediatek86_pwd;persistsecurityinfo=True;database=mediatek86;SslMode=none";
         /// <summary>
-        /// instance unique de la classe
+        /// Instance unique de la classe
         /// </summary>
         private static Access instance = null;
         /// <summary>

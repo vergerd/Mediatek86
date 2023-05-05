@@ -14,11 +14,11 @@ namespace Mediatek86.contoleur
         public class FrmPersonnelsController
     {
         /// <summary>
-        /// objet d'accès aux opérations possibles sur Personnel
+        /// Objet d'accès aux opérations possibles sur Personnel
         /// </summary>
         private readonly PersonnelAccess personnelAccess;
         /// <summary>
-        /// récupère l'accès aux données
+        /// Récupère l'accès aux données
         /// </summary>
         public FrmPersonnelsController()
         {
@@ -31,6 +31,14 @@ namespace Mediatek86.contoleur
         public List<Personnel> GetLesPersonnels()
         {
             return personnelAccess.GetLesPersonnels();
+        }
+        /// <summary>
+        /// Demande de suppresion d'un personnel
+        /// </summary>
+        /// <param name="personnel"></param>
+        public void DelPersonnel(Personnel personnel)
+        {
+            personnelAccess.DelPersonnel(personnel);
         }
     }
 }

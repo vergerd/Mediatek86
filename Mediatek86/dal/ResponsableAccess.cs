@@ -13,7 +13,7 @@ namespace Mediatek86.dal
     public class ResponsableAccess
     {
         /// <summary>
-        /// instance unique de l'accès aux données
+        /// Instance unique de l'accès aux données
         /// </summary>
         private readonly Access access = null;
 

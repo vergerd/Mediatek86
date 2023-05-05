@@ -14,12 +14,12 @@ namespace Mediatek86.contoleur
     public class FrmAjoutModifPersonnelController
     {
         /// <summary>
-        /// objet d'accès aux opérations possibles sur Service
+        /// Objet d'accès aux opérations possibles sur Service
         /// </summary>
         private readonly ServiceAccess serviceAccess;
         private readonly PersonnelAccess personnelAccess;
         /// <summary>
-        /// récupère l'accès aux données
+        /// Récupère l'accès aux données
         /// </summary>
         public FrmAjoutModifPersonnelController()
         {
@@ -28,7 +28,7 @@ namespace Mediatek86.contoleur
 
         }
         /// <summary>
-        /// récupère et retourne les infos des services
+        /// Récupère et retourne les infos des services
         /// </summary>
         /// <returns></returns>
         public List<Service> GetLesServices()
@@ -36,7 +36,7 @@ namespace Mediatek86.contoleur
             return serviceAccess.GetLesServices();
         }
         /// <summary>
-        /// demande de modification d'un personnel
+        /// Demande de modification d'un personnel
         /// </summary>
         /// <param name="personnel"></param>
         public void UpdatePersonnel(Personnel personnel)
@@ -44,7 +44,7 @@ namespace Mediatek86.contoleur
             personnelAccess.UpdatePersonnel(personnel);
         }
         /// <summary>
-        /// demande d'ajout d'un personnel
+        /// Demande d'ajout d'un personnel
         /// </summary>
         /// <param name="personnel"></param>
         public void AddPersonnel(Personnel personnel)
