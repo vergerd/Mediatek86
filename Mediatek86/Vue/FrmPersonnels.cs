@@ -25,13 +25,20 @@ namespace Mediatek86.vue
         /// Controleur de la fenêtre
         /// </summary>
         private FrmPersonnelsController controller;
+        public Button BtnModifierPersonnel
+        {
+            get { return btnModifierPersonnel; }
+        }
         /// <summary>
         /// Construction des composants graphiques et appel des autres initialisations
-        /// </summary>
+        /// </summary>        
         public FrmPersonnels(FrmAuthentification frmauthentification)       
         {
             InitializeComponent();
-            frmauthentification.Visible = false;
+            if (frmauthentification != null)
+            {
+                frmauthentification.Visible = false;
+            }
             Init();
         }
         /// <summary>
@@ -45,16 +52,38 @@ namespace Mediatek86.vue
         /// <summary>
         /// Affiche les personnels
         /// </summary>
-        private void RemplirListePersonnels()
+        public void RemplirListePersonnels()
         {
             List<Personnel> lesPersonnels = controller.GetLesPersonnels();
             bdgPersonnels.DataSource = lesPersonnels;
             dgvPersonnels.DataSource = bdgPersonnels;
-            dgvPersonnels.Columns["idpersonnel"].Visible = false;
-            dgvPersonnels.Columns["idservice"].Visible = false;
+            dgvPersonnels.Columns["idpersonnel"].Visible = false;            
             dgvPersonnels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
-
-
+        /// <summary>
+        /// demande de création d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAjouterPersonnel_Click(object sender, EventArgs e)
+        {
+            FrmAjoutModifPersonnel frm = new FrmAjoutModifPersonnel(null, sender, this);
+            frm.ShowDialog();
+        }
+        /// <summary>
+        /// demande de modification d'un personnel
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnModifierPersonnel_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnels.SelectedRows.Count > 0)
+            {
+                Personnel personnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
+                FrmAjoutModifPersonnel frm = new FrmAjoutModifPersonnel(personnel, sender, this);
+                frm.ShowDialog();
+            }
+                
+        }
     }
 }

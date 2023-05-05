@@ -79,6 +79,7 @@ namespace Mediatek86.vue
             this.btnModifierPersonnel.TabIndex = 2;
             this.btnModifierPersonnel.Text = "modifier";
             this.btnModifierPersonnel.UseVisualStyleBackColor = true;
+            this.btnModifierPersonnel.Click += new System.EventHandler(this.btnModifierPersonnel_Click);
             // 
             // btnAjouterPersonnel
             // 
@@ -88,6 +89,7 @@ namespace Mediatek86.vue
             this.btnAjouterPersonnel.TabIndex = 1;
             this.btnAjouterPersonnel.Text = "ajouter";
             this.btnAjouterPersonnel.UseVisualStyleBackColor = true;
+            this.btnAjouterPersonnel.Click += new System.EventHandler(this.btnAjouterPersonnel_Click);
             // 
             // dgvPersonnels
             // 
@@ -105,6 +107,7 @@ namespace Mediatek86.vue
             this.dgvPersonnels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvPersonnels.Size = new System.Drawing.Size(679, 313);
             this.dgvPersonnels.TabIndex = 0;
+            this.dgvPersonnels.TabStop = false;
             // 
             // FrmPersonnels
             // 
