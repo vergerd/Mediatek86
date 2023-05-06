@@ -59,10 +59,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="bddmanager\Bddmanager.cs" />
+    <Compile Include="contoleur\FrmAbsenceController.cs" />
     <Compile Include="contoleur\FrmAjoutModifPersonnelController.cs" />
     <Compile Include="contoleur\FrmAuthentificationController.cs" />
     <Compile Include="contoleur\FrmPersonnelsController.cs" />
+    <Compile Include="dal\AbsenceAccess.cs" />
     <Compile Include="dal\Access.cs" />
+    <Compile Include="dal\MotifAccess.cs" />
     <Compile Include="dal\PersonnelAccess.cs" />
     <Compile Include="dal\ResponsableAccess.cs" />
     <Compile Include="dal\ServiceAccess.cs" />

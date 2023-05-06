@@ -48,25 +48,27 @@ namespace Mediatek86.vue
             this.grbPersonnels.Controls.Add(this.dgvPersonnels);
             this.grbPersonnels.Location = new System.Drawing.Point(12, 12);
             this.grbPersonnels.Name = "grbPersonnels";
-            this.grbPersonnels.Size = new System.Drawing.Size(693, 371);
+            this.grbPersonnels.Size = new System.Drawing.Size(647, 383);
             this.grbPersonnels.TabIndex = 0;
             this.grbPersonnels.TabStop = false;
             this.grbPersonnels.Text = "personnels";
             // 
             // btnAbsence
             // 
-            this.btnAbsence.Location = new System.Drawing.Point(552, 340);
+            this.btnAbsence.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnAbsence.Location = new System.Drawing.Point(508, 343);
             this.btnAbsence.Name = "btnAbsence";
-            this.btnAbsence.Size = new System.Drawing.Size(133, 23);
+            this.btnAbsence.Size = new System.Drawing.Size(133, 29);
             this.btnAbsence.TabIndex = 4;
             this.btnAbsence.Text = "gestion absences";
             this.btnAbsence.UseVisualStyleBackColor = true;
+            this.btnAbsence.Click += new System.EventHandler(this.btnAbsence_Click);
             // 
             // btnSupprimerPersonnel
             // 
-            this.btnSupprimerPersonnel.Location = new System.Drawing.Point(176, 340);
+            this.btnSupprimerPersonnel.Location = new System.Drawing.Point(184, 343);
             this.btnSupprimerPersonnel.Name = "btnSupprimerPersonnel";
-            this.btnSupprimerPersonnel.Size = new System.Drawing.Size(79, 23);
+            this.btnSupprimerPersonnel.Size = new System.Drawing.Size(83, 29);
             this.btnSupprimerPersonnel.TabIndex = 3;
             this.btnSupprimerPersonnel.Text = "supprimer";
             this.btnSupprimerPersonnel.UseVisualStyleBackColor = true;
@@ -74,9 +76,9 @@ namespace Mediatek86.vue
             // 
             // btnModifierPersonnel
             // 
-            this.btnModifierPersonnel.Location = new System.Drawing.Point(90, 340);
+            this.btnModifierPersonnel.Location = new System.Drawing.Point(95, 343);
             this.btnModifierPersonnel.Name = "btnModifierPersonnel";
-            this.btnModifierPersonnel.Size = new System.Drawing.Size(80, 23);
+            this.btnModifierPersonnel.Size = new System.Drawing.Size(83, 29);
             this.btnModifierPersonnel.TabIndex = 2;
             this.btnModifierPersonnel.Text = "modifier";
             this.btnModifierPersonnel.UseVisualStyleBackColor = true;
@@ -84,9 +86,9 @@ namespace Mediatek86.vue
             // 
             // btnAjouterPersonnel
             // 
-            this.btnAjouterPersonnel.Location = new System.Drawing.Point(6, 340);
+            this.btnAjouterPersonnel.Location = new System.Drawing.Point(6, 343);
             this.btnAjouterPersonnel.Name = "btnAjouterPersonnel";
-            this.btnAjouterPersonnel.Size = new System.Drawing.Size(78, 23);
+            this.btnAjouterPersonnel.Size = new System.Drawing.Size(83, 29);
             this.btnAjouterPersonnel.TabIndex = 1;
             this.btnAjouterPersonnel.Text = "ajouter";
             this.btnAjouterPersonnel.UseVisualStyleBackColor = true;
@@ -97,6 +99,7 @@ namespace Mediatek86.vue
             this.dgvPersonnels.AllowUserToAddRows = false;
             this.dgvPersonnels.AllowUserToDeleteRows = false;
             this.dgvPersonnels.AllowUserToResizeRows = false;
+            this.dgvPersonnels.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvPersonnels.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvPersonnels.Location = new System.Drawing.Point(6, 21);
             this.dgvPersonnels.MultiSelect = false;
@@ -106,7 +109,7 @@ namespace Mediatek86.vue
             this.dgvPersonnels.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvPersonnels.RowTemplate.Height = 24;
             this.dgvPersonnels.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvPersonnels.Size = new System.Drawing.Size(679, 313);
+            this.dgvPersonnels.Size = new System.Drawing.Size(642, 313);
             this.dgvPersonnels.TabIndex = 0;
             this.dgvPersonnels.TabStop = false;
             // 
@@ -114,7 +117,7 @@ namespace Mediatek86.vue
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(720, 389);
+            this.ClientSize = new System.Drawing.Size(671, 398);
             this.Controls.Add(this.grbPersonnels);
             this.Name = "FrmPersonnels";
             this.Text = "Personnels";

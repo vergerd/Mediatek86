@@ -106,7 +106,7 @@ namespace Mediatek86.vue
             this.txtNom.Location = new System.Drawing.Point(92, 31);
             this.txtNom.Name = "txtNom";
             this.txtNom.Size = new System.Drawing.Size(239, 22);
-            this.txtNom.TabIndex = 7;
+            this.txtNom.TabIndex = 5;
             // 
             // txtPrenom
             // 
@@ -120,7 +120,7 @@ namespace Mediatek86.vue
             this.txtTelephone.Location = new System.Drawing.Point(92, 100);
             this.txtTelephone.Name = "txtTelephone";
             this.txtTelephone.Size = new System.Drawing.Size(239, 22);
-            this.txtTelephone.TabIndex = 5;
+            this.txtTelephone.TabIndex = 7;
             // 
             // lblService
             // 

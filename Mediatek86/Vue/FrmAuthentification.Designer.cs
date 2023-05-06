@@ -71,9 +71,9 @@ namespace Mediatek86.vue
             // 
             // btnSeConnecter
             // 
-            this.btnSeConnecter.Location = new System.Drawing.Point(174, 68);
+            this.btnSeConnecter.Location = new System.Drawing.Point(161, 68);
             this.btnSeConnecter.Name = "btnSeConnecter";
-            this.btnSeConnecter.Size = new System.Drawing.Size(101, 27);
+            this.btnSeConnecter.Size = new System.Drawing.Size(114, 27);
             this.btnSeConnecter.TabIndex = 4;
             this.btnSeConnecter.Text = "se connecter";
             this.btnSeConnecter.UseVisualStyleBackColor = true;

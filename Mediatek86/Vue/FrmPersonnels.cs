@@ -32,7 +32,7 @@ namespace Mediatek86.vue
         /// <summary>
         /// Construction des composants graphiques et appel des autres initialisations
         /// </summary>        
-        public FrmPersonnels(FrmAuthentification frmauthentification)       
+        public FrmPersonnels(FrmAuthentification frmauthentification)
         {
             InitializeComponent();
             if (frmauthentification != null)
@@ -57,7 +57,7 @@ namespace Mediatek86.vue
             List<Personnel> lesPersonnels = controller.GetLesPersonnels();
             bdgPersonnels.DataSource = lesPersonnels;
             dgvPersonnels.DataSource = bdgPersonnels;
-            dgvPersonnels.Columns["idpersonnel"].Visible = false;            
+            dgvPersonnels.Columns["idpersonnel"].Visible = false;
             dgvPersonnels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
         /// <summary>
@@ -83,7 +83,7 @@ namespace Mediatek86.vue
                 FrmAjoutModifPersonnel frm = new FrmAjoutModifPersonnel(personnel, sender, this);
                 frm.ShowDialog();
             }
-                
+
         }
         /// <summary>
         /// demande de suppresion d'un personnel
@@ -92,10 +92,10 @@ namespace Mediatek86.vue
         /// <param name="e"></param>
         private void btnSupprimerPersonnel_Click(object sender, EventArgs e)
         {
-            if(dgvPersonnels.SelectedRows.Count > 0)
+            if (dgvPersonnels.SelectedRows.Count > 0)
             {
                 Personnel personnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
-                if (MessageBox.Show("Voulez-vous vraiment supprimer " + personnel.Nom + " "+ personnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                if (MessageBox.Show("Voulez-vous vraiment supprimer " + personnel.Nom + " " + personnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     controller.DelPersonnel(personnel);
                     RemplirListePersonnels();
@@ -104,6 +104,20 @@ namespace Mediatek86.vue
             else
             {
                 MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+            }
+        }
+        /// <summary>
+        /// Demande d'affichage des absences
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAbsence_Click(object sender, EventArgs e)
+        {
+            if (dgvPersonnels.SelectedRows.Count > 0)
+            {
+                Personnel personnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
+                FrmAbsence frm = new FrmAbsence(personnel);
+                frm.ShowDialog();
             }
         }
     }
