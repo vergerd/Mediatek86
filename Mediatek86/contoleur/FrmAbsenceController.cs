@@ -42,5 +42,13 @@ namespace Mediatek86.contoleur
         {
             return motifAccess.GetLesMotifs();
         }
+        /// <summary>
+        /// Demande d'ajout d'une absence
+        /// </summary>
+        /// <param name="absence"></param>
+        public void AddAbsence(Absence absence)
+        {
+            absenceAccess.AddAbsence(absence);
+        }
     }
 }
