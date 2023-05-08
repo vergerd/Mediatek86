@@ -26,6 +26,10 @@ namespace Mediatek86.vue
         /// </summary>
         private Boolean enCoursDeMotdifAbsence = false;
         /// <summary>
+        /// Booléen pour savoir si les dates à entregistrer contiennent déjà une absence
+        /// </summary>
+        private Boolean testDate = false;
+        /// <summary>
         /// Objet pour gérer la liste des absences
         /// </summary>
         private BindingSource bdgAbsences = new BindingSource();
@@ -111,18 +115,33 @@ namespace Mediatek86.vue
             {
                 if (dtpFin.Value >= dtpDebut.Value)
                 {
-                    Motif motif = (Motif)bdgMotifs.List[bdgMotifs.Position];
-                    if (enCoursDeMotdifAbsence)
+                    foreach (DataGridViewRow row in dgvAbsences.Rows)
                     {
+                        if (dtpDebut.Value < (DateTime)row.Cells[2].Value && dtpFin.Value > (DateTime)row.Cells[1].Value)
+                        {
+                            testDate = true;
+                        }
+                    }
+                    if (!testDate)
+                    {
+                        Motif motif = (Motif)bdgMotifs.List[bdgMotifs.Position];
+                        if (enCoursDeMotdifAbsence)
+                        {
 
+                        }
+                        else
+                        {
+                            Absence absence = new Absence(personnel.Idpersonnel, dtpDebut.Value, dtpFin.Value, motif);
+                            controller.AddAbsence(absence);
+                        }
+                        RemplirListeAbsences(personnel);
+                        EnCoursModifAbsence(false);
                     }
                     else
                     {
-                        Absence absence = new Absence(personnel.Idpersonnel, dtpDebut.Value, dtpFin.Value, motif);
-                        controller.AddAbsence(absence);
+                        MessageBox.Show("Une absence est déjà enregistrée sur cette période", "Information");
+                        testDate = false;
                     }
-                    RemplirListeAbsences(personnel);
-                    EnCoursModifAbsence(false);
                 }
                 else
                 {
@@ -149,6 +168,27 @@ namespace Mediatek86.vue
                     EnCoursModifAbsence(false);
                 }
             }
+        }
+        /// <summary>
+        /// Demande de suppression d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnSupprimerAbsence_Click(object sender, EventArgs e)
+        {
+            if (dgvAbsences.SelectedRows.Count > 0)
+            {
+                Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                if (MessageBox.Show("Voulez-vous vraiment supprimer : " + dgvAbsences.SelectedRows[0].Cells[3].Value + " du " + ((DateTime)(dgvAbsences.SelectedRows[0].Cells[1].Value)).ToString("dd/MM/yyyy") + " au " + ((DateTime)(dgvAbsences.SelectedRows[0].Cells[2].Value)).ToString("dd/MM/yyyy") + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    controller.DelAbsence(absence);
+                    RemplirListeAbsences(personnel);
+                }
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
+            }            
         }
     }
 }

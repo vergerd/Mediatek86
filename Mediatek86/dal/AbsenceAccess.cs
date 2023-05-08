@@ -27,7 +27,7 @@ namespace Mediatek86.dal
         /// Récupère et retourne les absences concernant le personnel passé en paramètre
         /// </summary>
         /// <param name="personnel"></param>
-        /// <returns></returns>
+        /// <returns>liste des absences</returns>
         public List<Absence> GetLesAbsences(Personnel personnel)
         {
             List<Absence> lesAbsences = new List<Absence>();
@@ -60,6 +60,10 @@ namespace Mediatek86.dal
             }
             return lesAbsences;
         }
+        /// <summary>
+        /// Demande d'ajout d'une absence
+        /// </summary>
+        /// <param name="absence">objet absence à ajouter</param>
         public void AddAbsence(Absence absence)
         {
             if (access.Manager != null)
@@ -81,6 +85,29 @@ namespace Mediatek86.dal
                     Environment.Exit(0);
                 }
 
+            }
+        }
+        /// <summary>
+        /// Demande de suppression d'une absence
+        /// </summary>
+        /// <param name="absence">objet absence à supprimer</param>
+        public void DelAbsence(Absence absence)
+        {
+            if (access.Manager != null)
+            {
+                string req = "delete from absence where idpersonnel = @idpersonnel and datedebut = @datedebut;";
+                Dictionary<string, Object> parameters = new Dictionary<string, object>();
+                parameters.Add("@idpersonnel", absence.Idpersonnel);
+                parameters.Add("@datedebut", absence.Datedebut);
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
             }
         }
 

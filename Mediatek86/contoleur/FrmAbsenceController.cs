@@ -29,7 +29,7 @@ namespace Mediatek86.contoleur
         /// <summary>
         /// Récupère et retourne les infos des développeurs
         /// </summary>
-        /// <returns></returns>
+        /// <returns>liste des absences</returns>
         public List<Absence> GetLesAbsences(Personnel personnel)
         {
             return absenceAccess.GetLesAbsences(personnel);
@@ -45,10 +45,18 @@ namespace Mediatek86.contoleur
         /// <summary>
         /// Demande d'ajout d'une absence
         /// </summary>
-        /// <param name="absence"></param>
+        /// <param name="absence">objet absence à ajouter</param>
         public void AddAbsence(Absence absence)
         {
             absenceAccess.AddAbsence(absence);
+        }
+        /// <summary>
+        /// Demande de suppresion d'une absence
+        /// </summary>
+        /// <param name="absence">objet absence à supprimer</param>
+        public void DelAbsence (Absence absence)
+        {
+            absenceAccess.DelAbsence(absence);
         }
     }
 }
