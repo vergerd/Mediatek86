@@ -1,10 +1,6 @@
 ﻿using Mediatek86.dal;
 using Mediatek86.modele;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mediatek86.contoleur
 {
@@ -25,12 +21,11 @@ namespace Mediatek86.contoleur
         {
             serviceAccess = new ServiceAccess();
             personnelAccess = new PersonnelAccess();
-
         }
         /// <summary>
         /// Récupère et retourne les infos des services
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Liste des services</returns>
         public List<Service> GetLesServices()
         {
             return serviceAccess.GetLesServices();
@@ -38,7 +33,7 @@ namespace Mediatek86.contoleur
         /// <summary>
         /// Demande de modification d'un personnel
         /// </summary>
-        /// <param name="personnel"></param>
+        /// <param name="personnel">Personnel concerné</param>
         public void UpdatePersonnel(Personnel personnel)
         {
             personnelAccess.UpdatePersonnel(personnel);
@@ -46,7 +41,7 @@ namespace Mediatek86.contoleur
         /// <summary>
         /// Demande d'ajout d'un personnel
         /// </summary>
-        /// <param name="personnel"></param>
+        /// <param name="personnel">Personnel concerné</param>
         public void AddPersonnel(Personnel personnel)
         {
             personnelAccess.AddPersonnel(personnel);

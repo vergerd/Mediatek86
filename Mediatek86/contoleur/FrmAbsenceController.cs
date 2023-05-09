@@ -2,9 +2,6 @@
 using Mediatek86.modele;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mediatek86.contoleur
 {
@@ -17,6 +14,9 @@ namespace Mediatek86.contoleur
         /// Objet d'accès aux opérations possibles sur Absence
         /// </summary>
         private readonly AbsenceAccess absenceAccess;
+        /// <summary>
+        /// Objet d'accès aux opération possibles sur Motif
+        /// </summary>
         private readonly MotifAccess motifAccess;
         /// <summary>
         /// Récupère les accès aux données
@@ -57,6 +57,17 @@ namespace Mediatek86.contoleur
         public void DelAbsence (Absence absence)
         {
             absenceAccess.DelAbsence(absence);
+        }        
+        /// <summary>
+        /// Demande de modification d'une absence
+        /// </summary>
+        /// <param name="absence">objet absence à supprimer</param>
+        /// <param name="personnel">personnel concerné</param>
+        /// <param name="dateDebut">datedebut originelle</param>
+        public void UpdateAbsence(Absence absence, Personnel personnel, DateTime dateDebut)
+        {
+            absenceAccess.UpdateAbsence(absence, personnel, dateDebut);
         }
+
     }
 }

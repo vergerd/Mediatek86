@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Mediatek86.modele
 {
     /// <summary>
@@ -21,7 +16,6 @@ namespace Mediatek86.modele
             this.Idmotif = idmotif;
             this.Libelle = libelle;
         }
-
         public int Idmotif { get; }
         public string Libelle { get; }
         /// <summary>

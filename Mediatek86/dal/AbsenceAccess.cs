@@ -1,9 +1,6 @@
 ﻿using Mediatek86.modele;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mediatek86.dal
 {
@@ -26,8 +23,8 @@ namespace Mediatek86.dal
         /// <summary>
         /// Récupère et retourne les absences concernant le personnel passé en paramètre
         /// </summary>
-        /// <param name="personnel"></param>
-        /// <returns>liste des absences</returns>
+        /// <param name="personnel">personnel concerné</param>
+        /// <returns>Liste des absences</returns>
         public List<Absence> GetLesAbsences(Personnel personnel)
         {
             List<Absence> lesAbsences = new List<Absence>();
@@ -63,7 +60,7 @@ namespace Mediatek86.dal
         /// <summary>
         /// Demande d'ajout d'une absence
         /// </summary>
-        /// <param name="absence">objet absence à ajouter</param>
+        /// <param name="absence">Objet absence à ajouter</param>
         public void AddAbsence(Absence absence)
         {
             if (access.Manager != null)
@@ -90,7 +87,7 @@ namespace Mediatek86.dal
         /// <summary>
         /// Demande de suppression d'une absence
         /// </summary>
-        /// <param name="absence">objet absence à supprimer</param>
+        /// <param name="absence">Objet absence à supprimer</param>
         public void DelAbsence(Absence absence)
         {
             if (access.Manager != null)
@@ -108,6 +105,59 @@ namespace Mediatek86.dal
                     Console.WriteLine(e.Message);
                     Environment.Exit(0);
                 }
+            }
+        }
+        /// <summary>
+        /// Demande de suppression de toutes les absences d'un personnel
+        /// </summary>
+        /// <param name="personnel">Personnel concerné</param>
+        public void DelAllAbsence(Personnel personnel)
+        {
+            if (access.Manager != null)
+            {
+                string req = "delete from absence where idpersonnel = @idpersonnel;";
+                Dictionary<string, Object> parameters = new Dictionary<string, object>();
+                parameters.Add("@idpersonnel", personnel.Idpersonnel);                
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
+            }
+        }
+        /// <summary>
+        /// Demande de modification d'un absence
+        /// </summary>
+        /// <param name="absence">Objet absence à supprimer</param>
+        /// <param name="personnel">Personnel concerné</param>
+        /// <param name="dateDebut">datedebut originelle</param>
+        public void UpdateAbsence(Absence absence, Personnel personnel, DateTime dateDebut )
+        {
+            if (access.Manager != null)
+            {
+                string req = "update absence set datedebut = @datedebut, datefin = @datefin, idmotif = @idmotif ";
+                req += "where idpersonnel = @idpersonnel and datedebut = @datedebutref";
+                Dictionary<string, Object> parameters = new Dictionary<string, object>();
+                parameters.Add("@datedebut", absence.Datedebut);
+                parameters.Add("@datefin", absence.Datefin);
+                parameters.Add("@idmotif", absence.Motif.Idmotif);
+                parameters.Add("@idpersonnel", personnel.Idpersonnel);
+                parameters.Add("@datedebutref", dateDebut);
+                
+                try
+                {
+                    access.Manager.ReqUpdate(req, parameters);
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine(e.Message);
+                    Environment.Exit(0);
+                }
+
             }
         }
 

@@ -36,6 +36,7 @@ namespace Mediatek86.vue
         private void Init()
         {
             controller = new FrmAuthentificationController();
+            this.StartPosition = FormStartPosition.CenterScreen;
         }
 
         /// <summary>

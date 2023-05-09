@@ -1,10 +1,6 @@
 ﻿using Mediatek86.modele;
 using Mediatek86.dal;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mediatek86.contoleur
 {
@@ -18,11 +14,16 @@ namespace Mediatek86.contoleur
         /// </summary>
         private readonly PersonnelAccess personnelAccess;
         /// <summary>
+        /// Objet d'accès aux opérations possibles sur Absences
+        /// </summary>
+        private readonly AbsenceAccess absenceAccess;
+        /// <summary>
         /// Récupère l'accès aux données
         /// </summary>
         public FrmPersonnelsController()
         {
             personnelAccess = new PersonnelAccess();
+            absenceAccess = new AbsenceAccess();
         }
         /// <summary>
         /// Récupère et retourne les infos des personnels
@@ -33,9 +34,17 @@ namespace Mediatek86.contoleur
             return personnelAccess.GetLesPersonnels();
         }
         /// <summary>
-        /// Demande de suppresion d'un personnel
+        /// Demande de suppression de toutes les absences d'un personnel
         /// </summary>
-        /// <param name="personnel"></param>
+        /// <param name="personnel">Personnel concerné</param>
+        public void DelAllAbsence(Personnel personnel)
+        {
+            absenceAccess.DelAllAbsence(personnel);
+        }
+        /// <summary>
+        /// Demande de suppression d'un personnel
+        /// </summary>
+        /// <param name="personnel">Personnel concerné</param>
         public void DelPersonnel(Personnel personnel)
         {
             personnelAccess.DelPersonnel(personnel);

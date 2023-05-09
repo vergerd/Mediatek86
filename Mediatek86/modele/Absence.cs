@@ -1,8 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mediatek86.modele
 {
@@ -29,6 +25,5 @@ namespace Mediatek86.modele
         public DateTime Datedebut { get; set; }
         public DateTime Datefin { get; set; }
         public Motif Motif { get; set; }
-
     }
 }

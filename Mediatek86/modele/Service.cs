@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace Mediatek86.modele
 {
     /// <summary>
@@ -26,7 +21,7 @@ namespace Mediatek86.modele
         /// <summary>
         /// Définit l'information à afficher (nom)
         /// </summary>
-        /// <returns>nom du service</returns>
+        /// <returns>Nom du service</returns>
         public override string ToString()
         {
             return this.Nom;

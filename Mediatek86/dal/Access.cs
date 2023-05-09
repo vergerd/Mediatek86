@@ -20,7 +20,6 @@ namespace Mediatek86.dal
         /// Getter sur l'objet d'accès aux données
         /// </summary>
         public BddManager Manager { get; }
-
         /// <summary>
         /// Création unique de l'objet de type BddManager
         /// Arrête le programme si l'accès à la BDD a échoué
@@ -36,7 +35,6 @@ namespace Mediatek86.dal
                 Environment.Exit(0);
             }
         }
-
         /// <summary>
         /// Création d'une seule instance de la classe
         /// </summary>
@@ -49,6 +47,5 @@ namespace Mediatek86.dal
             }
             return instance;
         }
-
     }
 }

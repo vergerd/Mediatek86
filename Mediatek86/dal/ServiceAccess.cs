@@ -1,9 +1,6 @@
 ﻿using Mediatek86.modele;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mediatek86.dal
 {
@@ -26,7 +23,7 @@ namespace Mediatek86.dal
         /// <summary>
         /// Récupère et retourne les services
         /// </summary>
-        /// <returns></returns>
+        /// <returns>Liste des services</returns>
         public List<Service> GetLesServices()
         {
             List<Service> lesServices = new List<Service>();
@@ -54,5 +51,4 @@ namespace Mediatek86.dal
             return lesServices;
         }
     }
-
 }

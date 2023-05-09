@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Mediatek86.modele;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Mediatek86.dal
 {
@@ -28,7 +25,7 @@ namespace Mediatek86.dal
         /// Controle si l'utilisateur à le droit de se connecter (responsable)
         /// </summary>
         /// <param name="responsable"></param>
-        /// <returns></returns>
+        /// <returns>Vrai si l'utilisateur est le responsable</returns>
         public Boolean ControleAuthentification(Responsable responsable)
         {
             if (access.Manager != null)

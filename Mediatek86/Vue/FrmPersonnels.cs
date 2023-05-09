@@ -2,12 +2,6 @@
 using Mediatek86.modele;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mediatek86.vue
@@ -25,13 +19,17 @@ namespace Mediatek86.vue
         /// Controleur de la fenêtre
         /// </summary>
         private FrmPersonnelsController controller;
+        /// <summary>
+        /// Demande de modification de personnel
+        /// </summary>
         public Button BtnModifierPersonnel
         {
             get { return btnModifierPersonnel; }
         }
         /// <summary>
         /// Construction des composants graphiques et appel des autres initialisations
-        /// </summary>        
+        /// </summary>
+        /// <param name="frmauthentification">Instance de la fenêtre d'authentification</param>
         public FrmPersonnels(FrmAuthentification frmauthentification)
         {
             InitializeComponent();
@@ -47,6 +45,7 @@ namespace Mediatek86.vue
         private void Init()
         {
             controller = new FrmPersonnelsController();
+            this.StartPosition = FormStartPosition.CenterScreen;
             RemplirListePersonnels();
         }
         /// <summary>
@@ -61,7 +60,7 @@ namespace Mediatek86.vue
             dgvPersonnels.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
         }
         /// <summary>
-        /// demande de création d'un personnel
+        /// Demande de création d'un personnel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -71,7 +70,7 @@ namespace Mediatek86.vue
             frm.ShowDialog();
         }
         /// <summary>
-        /// demande de modification d'un personnel
+        /// Demande de modification d'un personnel
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -86,7 +85,7 @@ namespace Mediatek86.vue
 
         }
         /// <summary>
-        /// demande de suppresion d'un personnel
+        /// Demande de suppresion d'un personnel (et préalablement, de toutes ces absences)
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -97,6 +96,7 @@ namespace Mediatek86.vue
                 Personnel personnel = (Personnel)bdgPersonnels.List[bdgPersonnels.Position];
                 if (MessageBox.Show("Voulez-vous vraiment supprimer " + personnel.Nom + " " + personnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
+                    controller.DelAllAbsence(personnel);
                     controller.DelPersonnel(personnel);
                     RemplirListePersonnels();
                 }

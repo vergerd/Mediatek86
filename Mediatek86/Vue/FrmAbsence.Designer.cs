@@ -30,10 +30,11 @@ namespace Mediatek86.vue
         private void InitializeComponent()
         {
             this.grpAbsences = new System.Windows.Forms.GroupBox();
+            this.btnAjouter = new System.Windows.Forms.Button();
             this.btnSupprimerAbsence = new System.Windows.Forms.Button();
             this.bntModifierAbsence = new System.Windows.Forms.Button();
             this.dgvAbsences = new System.Windows.Forms.DataGridView();
-            this.grbActionsAbsence = new System.Windows.Forms.GroupBox();
+            this.grpActionsAbsence = new System.Windows.Forms.GroupBox();
             this.dtpFin = new System.Windows.Forms.DateTimePicker();
             this.dtpDebut = new System.Windows.Forms.DateTimePicker();
             this.cboMotifs = new System.Windows.Forms.ComboBox();
@@ -45,24 +46,35 @@ namespace Mediatek86.vue
             this.btnFermerAbsences = new System.Windows.Forms.Button();
             this.grpAbsences.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).BeginInit();
-            this.grbActionsAbsence.SuspendLayout();
+            this.grpActionsAbsence.SuspendLayout();
             this.SuspendLayout();
             // 
             // grpAbsences
             // 
+            this.grpAbsences.Controls.Add(this.btnAjouter);
             this.grpAbsences.Controls.Add(this.btnSupprimerAbsence);
             this.grpAbsences.Controls.Add(this.bntModifierAbsence);
             this.grpAbsences.Controls.Add(this.dgvAbsences);
             this.grpAbsences.Location = new System.Drawing.Point(12, 12);
             this.grpAbsences.Name = "grpAbsences";
-            this.grpAbsences.Size = new System.Drawing.Size(345, 256);
+            this.grpAbsences.Size = new System.Drawing.Size(319, 256);
             this.grpAbsences.TabIndex = 0;
             this.grpAbsences.TabStop = false;
             this.grpAbsences.Text = "absence";
             // 
+            // btnAjouter
+            // 
+            this.btnAjouter.Location = new System.Drawing.Point(38, 219);
+            this.btnAjouter.Name = "btnAjouter";
+            this.btnAjouter.Size = new System.Drawing.Size(87, 31);
+            this.btnAjouter.TabIndex = 12;
+            this.btnAjouter.Text = "ajouter";
+            this.btnAjouter.UseVisualStyleBackColor = true;
+            this.btnAjouter.Click += new System.EventHandler(this.btnAjouter_Click);
+            // 
             // btnSupprimerAbsence
             // 
-            this.btnSupprimerAbsence.Location = new System.Drawing.Point(252, 219);
+            this.btnSupprimerAbsence.Location = new System.Drawing.Point(226, 219);
             this.btnSupprimerAbsence.Name = "btnSupprimerAbsence";
             this.btnSupprimerAbsence.Size = new System.Drawing.Size(87, 31);
             this.btnSupprimerAbsence.TabIndex = 3;
@@ -72,12 +84,13 @@ namespace Mediatek86.vue
             // 
             // bntModifierAbsence
             // 
-            this.bntModifierAbsence.Location = new System.Drawing.Point(157, 219);
+            this.bntModifierAbsence.Location = new System.Drawing.Point(131, 219);
             this.bntModifierAbsence.Name = "bntModifierAbsence";
             this.bntModifierAbsence.Size = new System.Drawing.Size(89, 31);
             this.bntModifierAbsence.TabIndex = 2;
             this.bntModifierAbsence.Text = "modifier";
             this.bntModifierAbsence.UseVisualStyleBackColor = true;
+            this.bntModifierAbsence.Click += new System.EventHandler(this.bntModifierAbsence_Click);
             // 
             // dgvAbsences
             // 
@@ -86,7 +99,7 @@ namespace Mediatek86.vue
             this.dgvAbsences.AllowUserToResizeRows = false;
             this.dgvAbsences.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.dgvAbsences.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvAbsences.Location = new System.Drawing.Point(9, 21);
+            this.dgvAbsences.Location = new System.Drawing.Point(6, 21);
             this.dgvAbsences.MultiSelect = false;
             this.dgvAbsences.Name = "dgvAbsences";
             this.dgvAbsences.ReadOnly = true;
@@ -94,54 +107,54 @@ namespace Mediatek86.vue
             this.dgvAbsences.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
             this.dgvAbsences.RowTemplate.Height = 24;
             this.dgvAbsences.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvAbsences.Size = new System.Drawing.Size(330, 192);
+            this.dgvAbsences.Size = new System.Drawing.Size(307, 192);
             this.dgvAbsences.TabIndex = 0;
             this.dgvAbsences.TabStop = false;
             // 
-            // grbActionsAbsence
+            // grpActionsAbsence
             // 
-            this.grbActionsAbsence.Controls.Add(this.dtpFin);
-            this.grbActionsAbsence.Controls.Add(this.dtpDebut);
-            this.grbActionsAbsence.Controls.Add(this.cboMotifs);
-            this.grbActionsAbsence.Controls.Add(this.btnAnnulerAbsence);
-            this.grbActionsAbsence.Controls.Add(this.btnEnregistrerAbsence);
-            this.grbActionsAbsence.Controls.Add(this.lblMotif);
-            this.grbActionsAbsence.Controls.Add(this.lblDateFin);
-            this.grbActionsAbsence.Controls.Add(this.lblDateDebut);
-            this.grbActionsAbsence.Location = new System.Drawing.Point(12, 274);
-            this.grbActionsAbsence.Name = "grbActionsAbsence";
-            this.grbActionsAbsence.Size = new System.Drawing.Size(345, 142);
-            this.grbActionsAbsence.TabIndex = 1;
-            this.grbActionsAbsence.TabStop = false;
-            this.grbActionsAbsence.Text = "Absence";
+            this.grpActionsAbsence.Controls.Add(this.dtpFin);
+            this.grpActionsAbsence.Controls.Add(this.dtpDebut);
+            this.grpActionsAbsence.Controls.Add(this.cboMotifs);
+            this.grpActionsAbsence.Controls.Add(this.btnAnnulerAbsence);
+            this.grpActionsAbsence.Controls.Add(this.btnEnregistrerAbsence);
+            this.grpActionsAbsence.Controls.Add(this.lblMotif);
+            this.grpActionsAbsence.Controls.Add(this.lblDateFin);
+            this.grpActionsAbsence.Controls.Add(this.lblDateDebut);
+            this.grpActionsAbsence.Location = new System.Drawing.Point(12, 274);
+            this.grpActionsAbsence.Name = "grpActionsAbsence";
+            this.grpActionsAbsence.Size = new System.Drawing.Size(319, 128);
+            this.grpActionsAbsence.TabIndex = 1;
+            this.grpActionsAbsence.TabStop = false;
+            this.grpActionsAbsence.Text = "Absence";
             // 
             // dtpFin
             // 
             this.dtpFin.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpFin.Location = new System.Drawing.Point(234, 36);
+            this.dtpFin.Location = new System.Drawing.Point(86, 64);
             this.dtpFin.Name = "dtpFin";
-            this.dtpFin.Size = new System.Drawing.Size(105, 22);
+            this.dtpFin.Size = new System.Drawing.Size(121, 22);
             this.dtpFin.TabIndex = 5;
             // 
             // dtpDebut
             // 
             this.dtpDebut.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtpDebut.Location = new System.Drawing.Point(67, 36);
+            this.dtpDebut.Location = new System.Drawing.Point(86, 36);
             this.dtpDebut.Name = "dtpDebut";
-            this.dtpDebut.Size = new System.Drawing.Size(105, 22);
+            this.dtpDebut.Size = new System.Drawing.Size(121, 22);
             this.dtpDebut.TabIndex = 4;
             // 
             // cboMotifs
             // 
             this.cboMotifs.FormattingEnabled = true;
-            this.cboMotifs.Location = new System.Drawing.Point(67, 67);
+            this.cboMotifs.Location = new System.Drawing.Point(86, 92);
             this.cboMotifs.Name = "cboMotifs";
-            this.cboMotifs.Size = new System.Drawing.Size(126, 24);
+            this.cboMotifs.Size = new System.Drawing.Size(121, 24);
             this.cboMotifs.TabIndex = 8;
             // 
             // btnAnnulerAbsence
             // 
-            this.btnAnnulerAbsence.Location = new System.Drawing.Point(252, 97);
+            this.btnAnnulerAbsence.Location = new System.Drawing.Point(226, 81);
             this.btnAnnulerAbsence.Name = "btnAnnulerAbsence";
             this.btnAnnulerAbsence.Size = new System.Drawing.Size(87, 31);
             this.btnAnnulerAbsence.TabIndex = 10;
@@ -151,7 +164,7 @@ namespace Mediatek86.vue
             // 
             // btnEnregistrerAbsence
             // 
-            this.btnEnregistrerAbsence.Location = new System.Drawing.Point(157, 97);
+            this.btnEnregistrerAbsence.Location = new System.Drawing.Point(224, 34);
             this.btnEnregistrerAbsence.Name = "btnEnregistrerAbsence";
             this.btnEnregistrerAbsence.Size = new System.Drawing.Size(89, 31);
             this.btnEnregistrerAbsence.TabIndex = 9;
@@ -162,7 +175,7 @@ namespace Mediatek86.vue
             // lblMotif
             // 
             this.lblMotif.AutoSize = true;
-            this.lblMotif.Location = new System.Drawing.Point(6, 67);
+            this.lblMotif.Location = new System.Drawing.Point(6, 95);
             this.lblMotif.Name = "lblMotif";
             this.lblMotif.Size = new System.Drawing.Size(38, 17);
             this.lblMotif.TabIndex = 2;
@@ -171,7 +184,7 @@ namespace Mediatek86.vue
             // lblDateFin
             // 
             this.lblDateFin.AutoSize = true;
-            this.lblDateFin.Location = new System.Drawing.Point(195, 41);
+            this.lblDateFin.Location = new System.Drawing.Point(6, 69);
             this.lblDateFin.Name = "lblDateFin";
             this.lblDateFin.Size = new System.Drawing.Size(23, 17);
             this.lblDateFin.TabIndex = 1;
@@ -188,27 +201,28 @@ namespace Mediatek86.vue
             // 
             // btnFermerAbsences
             // 
-            this.btnFermerAbsences.Location = new System.Drawing.Point(264, 422);
+            this.btnFermerAbsences.Location = new System.Drawing.Point(236, 417);
             this.btnFermerAbsences.Name = "btnFermerAbsences";
-            this.btnFermerAbsences.Size = new System.Drawing.Size(87, 31);
+            this.btnFermerAbsences.Size = new System.Drawing.Size(89, 31);
             this.btnFermerAbsences.TabIndex = 11;
             this.btnFermerAbsences.Text = "fermer";
             this.btnFermerAbsences.UseVisualStyleBackColor = true;
+            this.btnFermerAbsences.Click += new System.EventHandler(this.btnFermerAbsences_Click);
             // 
             // FrmAbsence
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(363, 468);
+            this.ClientSize = new System.Drawing.Size(341, 460);
             this.Controls.Add(this.btnFermerAbsences);
-            this.Controls.Add(this.grbActionsAbsence);
+            this.Controls.Add(this.grpActionsAbsence);
             this.Controls.Add(this.grpAbsences);
             this.Name = "FrmAbsence";
             this.Text = "Absences";
             this.grpAbsences.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvAbsences)).EndInit();
-            this.grbActionsAbsence.ResumeLayout(false);
-            this.grbActionsAbsence.PerformLayout();
+            this.grpActionsAbsence.ResumeLayout(false);
+            this.grpActionsAbsence.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -217,7 +231,7 @@ namespace Mediatek86.vue
 
         private System.Windows.Forms.GroupBox grpAbsences;
         private System.Windows.Forms.DataGridView dgvAbsences;
-        private System.Windows.Forms.GroupBox grbActionsAbsence;
+        private System.Windows.Forms.GroupBox grpActionsAbsence;
         private System.Windows.Forms.Button btnSupprimerAbsence;
         private System.Windows.Forms.Button bntModifierAbsence;
         private System.Windows.Forms.DateTimePicker dtpFin;
@@ -229,5 +243,6 @@ namespace Mediatek86.vue
         private System.Windows.Forms.Label lblDateFin;
         private System.Windows.Forms.Label lblDateDebut;
         private System.Windows.Forms.Button btnFermerAbsences;
+        private System.Windows.Forms.Button btnAjouter;
     }
 }

@@ -49,6 +49,7 @@ namespace Mediatek86.vue
         {
 
             controller = new FrmAjoutModifPersonnelController();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.frmPersonnels = frm;
             this.personnel = personnel;
             RemplirListServices();

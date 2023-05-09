@@ -2,12 +2,6 @@
 using Mediatek86.modele;
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Mediatek86.vue
@@ -18,6 +12,10 @@ namespace Mediatek86.vue
     public partial class FrmAbsence : Form
     {
         /// <summary>
+        /// Date de début originelle de l'absence à modifier
+        /// </summary>
+        private DateTime dateDebut;
+        /// <summary>
         /// Personnel concerné par les absences
         /// </summary>
         private Personnel personnel;
@@ -26,9 +24,9 @@ namespace Mediatek86.vue
         /// </summary>
         private Boolean enCoursDeMotdifAbsence = false;
         /// <summary>
-        /// Booléen pour savoir si les dates à entregistrer contiennent déjà une absence
+        /// Booléen poue savoir si un ajout est demandé
         /// </summary>
-        private Boolean testDate = false;
+        private Boolean enCoursAjoutAbsence = false;        
         /// <summary>
         /// Objet pour gérer la liste des absences
         /// </summary>
@@ -55,10 +53,12 @@ namespace Mediatek86.vue
         private void Init(Personnel personnel)
         {
             controller = new FrmAbsenceController();
+            this.StartPosition = FormStartPosition.CenterScreen;
             this.personnel = personnel;
+            grpActionsAbsence.Enabled = false;
             RemplirListeAbsences(personnel);
             RemplirListeMotifs();
-            EnCoursModifAbsence(false);
+            InitialisationActionAbsence();            
         }
         /// <summary>
         /// Affiche les absences
@@ -84,26 +84,28 @@ namespace Mediatek86.vue
 
         }
         /// <summary>
-        /// Modification d'affichage suivant si on est en cours de modif ou d'ajout d'une absence
+        /// Initialise et rend inaccessible la zone d'ajout/modification 
+        /// </summary>
+        private void InitialisationActionAbsence()
+        {
+            grpAbsences.Enabled = true;
+            grpActionsAbsence.Enabled = false;
+            grpActionsAbsence.Text = "";
+            dtpDebut.Value = DateTime.Today;
+            dtpFin.Value = DateTime.Today;
+            cboMotifs.SelectedItem = cboMotifs.Items[0];
+
+        }
+        /// <summary>
+        /// Modification d'affichage si on est en cours de modif 
         /// </summary>
         /// <param name="modif"></param>
         private void EnCoursModifAbsence(Boolean modif)
         {
             enCoursDeMotdifAbsence = modif;
-            grbActionsAbsence.Enabled = !modif;
-            if (modif)
-            {
-                grbActionsAbsence.Text = "modifer une absence";
-            }
-            else
-            {
-                grbActionsAbsence.Text = "ajouter une absence";
-                btnAnnulerAbsence.Text = "réinitialiser";
-                dtpDebut.Value = DateTime.Today;
-                dtpFin.Value = DateTime.Today;
-                cboMotifs.SelectedItem = cboMotifs.Items[0];
-            }
-        }
+            grpAbsences.Enabled = !modif;
+            grpActionsAbsence.Text = "modifer une absence";
+        }   
         /// <summary>
         /// Demande d'enregistrement de l'ajout d'un absence
         /// </summary>
@@ -115,32 +117,31 @@ namespace Mediatek86.vue
             {
                 if (dtpFin.Value >= dtpDebut.Value)
                 {
-                    foreach (DataGridViewRow row in dgvAbsences.Rows)
-                    {
-                        if (dtpDebut.Value < (DateTime)row.Cells[2].Value && dtpFin.Value > (DateTime)row.Cells[1].Value)
-                        {
-                            testDate = true;
-                        }
-                    }
-                    if (!testDate)
+                    if (!ControleAbsencesSimultanees())
                     {
                         Motif motif = (Motif)bdgMotifs.List[bdgMotifs.Position];
                         if (enCoursDeMotdifAbsence)
                         {
+                            Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                            absence.Datedebut = dtpDebut.Value;
+                            absence.Datefin = dtpFin.Value;
+                            absence.Motif = motif;
+                            controller.UpdateAbsence(absence, personnel, dateDebut);
+                            EnCoursModifAbsence(false);
 
                         }
-                        else
+                        else if (enCoursAjoutAbsence)
                         {
                             Absence absence = new Absence(personnel.Idpersonnel, dtpDebut.Value, dtpFin.Value, motif);
                             controller.AddAbsence(absence);
+                            EnCoursAjoutAbsence(false);
                         }
                         RemplirListeAbsences(personnel);
-                        EnCoursModifAbsence(false);
+                        InitialisationActionAbsence();
                     }
                     else
                     {
                         MessageBox.Show("Une absence est déjà enregistrée sur cette période", "Information");
-                        testDate = false;
                     }
                 }
                 else
@@ -160,14 +161,11 @@ namespace Mediatek86.vue
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void btnAnnulerAbsence_Click(object sender, EventArgs e)
-        {
-            if (btnAnnulerAbsence.Text == "réinitialiser")
-            {
-                if (MessageBox.Show("Voulez-vous vraiment revenir aux valeurs par défaut ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+        {            
+                if (MessageBox.Show("Voulez-vous vraiment annuler ?", "Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
-                    EnCoursModifAbsence(false);
-                }
-            }
+                    InitialisationActionAbsence();                    
+                }            
         }
         /// <summary>
         /// Demande de suppression d'une absence
@@ -189,6 +187,90 @@ namespace Mediatek86.vue
             {
                 MessageBox.Show("Une ligne doit être sélectionnée.", "Information");
             }            
+        }
+        /// <summary>
+        /// Demande de modification d'un développeur
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void bntModifierAbsence_Click(object sender, EventArgs e)
+        {
+            if (dgvAbsences.SelectedRows.Count > 0)
+            {                
+                grpActionsAbsence.Enabled = true;
+                EnCoursModifAbsence(true);
+                Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                dtpDebut.Value = (DateTime)dgvAbsences.SelectedRows[0].Cells[1].Value;
+                dateDebut = (DateTime)dgvAbsences.SelectedRows[0].Cells[1].Value;
+                dtpFin.Value = (DateTime)dgvAbsences.SelectedRows[0].Cells[2].Value;
+                cboMotifs.SelectedIndex = cboMotifs.FindStringExact(absence.Motif.Libelle);
+            }
+            else
+            {
+                MessageBox.Show("Une ligne doit être selectionnée.", "Information");
+            }
+        }    
+        /// <summary>
+        ///  Demande d'ajout d'une absence
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnAjouter_Click(object sender, EventArgs e)
+        {
+            grpActionsAbsence.Enabled = true;
+            EnCoursAjoutAbsence(true);
+        }
+        /// <summary>
+        /// Modification d'affichage si on est en cours d'ajout
+        /// </summary>
+        /// <param name="modif"></param>
+        private void EnCoursAjoutAbsence(Boolean modif)
+        {
+            enCoursAjoutAbsence = modif;
+            grpAbsences.Enabled = !modif;            
+            grpActionsAbsence.Text = "ajouter une absence";
+            dtpDebut.Value = DateTime.Today;
+            dtpFin.Value = DateTime.Today;
+            cboMotifs.SelectedItem = cboMotifs.Items[0];            
+        }
+        /// <summary>
+        /// Controle d'absences simultanées
+        /// </summary>
+        /// <returns></returns>
+        private Boolean ControleAbsencesSimultanees()
+        {
+            Boolean test = false;
+            if (enCoursDeMotdifAbsence)
+            {
+                foreach (DataGridViewRow row in dgvAbsences.Rows)
+                {
+                    if (!row.Selected && (dtpDebut.Value <= (DateTime)row.Cells[2].Value && dtpFin.Value >= (DateTime)row.Cells[1].Value))
+                    {
+                        test = true;
+                    }                    
+                }
+                return test;
+            }
+            else if(enCoursAjoutAbsence)
+            {
+                foreach (DataGridViewRow row in dgvAbsences.Rows)
+                {
+                    if ((dtpDebut.Value <= (DateTime)row.Cells[2].Value && dtpFin.Value >= (DateTime)row.Cells[1].Value) || dtpDebut.Value == (DateTime)row.Cells[1].Value)
+                    {
+                        test = true;
+                    }
+                }
+            }
+            return test;
+        }
+        /// <summary>
+        /// Fermeture de la fenêtre de gestion des absences
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnFermerAbsences_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
