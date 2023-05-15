@@ -1,7 +1,9 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-
+/// <summary>
+/// Package contenant la classe qui gère la connexion et la communication avec la base de données
+/// </summary>
 namespace Mediatek86.bddmanager
 {
     /// <summary>

@@ -3,7 +3,9 @@ using Mediatek86.modele;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+/// <summary>
+/// Package contenant les interfaces
+/// </summary>
 namespace Mediatek86.vue
 {
     /// <summary>
@@ -56,6 +58,7 @@ namespace Mediatek86.vue
             this.StartPosition = FormStartPosition.CenterScreen;
             this.personnel = personnel;
             grpActionsAbsence.Enabled = false;
+            grpAbsences.Text = personnel.Nom + personnel.Prenom;
             RemplirListeAbsences(personnel);
             RemplirListeMotifs();
             InitialisationActionAbsence();            

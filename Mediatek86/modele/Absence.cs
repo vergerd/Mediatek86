@@ -1,5 +1,7 @@
 ﻿using System;
-
+/// <summary>
+/// Package contenant les classes métiers
+/// </summary>
 namespace Mediatek86.modele
 {
     /// <summary>

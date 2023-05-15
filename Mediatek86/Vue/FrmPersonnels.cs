@@ -3,7 +3,9 @@ using Mediatek86.modele;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-
+/// <summary>
+/// Package contenant les interfaces
+/// </summary>
 namespace Mediatek86.vue
 {
     /// <summary>

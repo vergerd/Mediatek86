@@ -1,7 +1,10 @@
 ﻿using Mediatek86.modele;
 using System;
 using System.Collections.Generic;
-
+/// <summary>
+/// Package Data Access Layer : exploite bbdmanager en lui envoyer les requêtes SQL
+/// </summary>
+/// </summary>
 namespace Mediatek86.dal
 {
     /// <summary>

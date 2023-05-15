@@ -1,7 +1,9 @@
 ﻿using Mediatek86.modele;
 using Mediatek86.dal;
 using System.Collections.Generic;
-
+/// <summary>
+/// Package qui contient les classes qui servent d'intermédiaire entre la Vue et le Modèle
+/// </summary>
 namespace Mediatek86.contoleur
 {
         /// <summary>
