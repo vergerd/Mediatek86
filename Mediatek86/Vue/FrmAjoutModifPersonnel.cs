@@ -90,13 +90,16 @@ namespace Mediatek86.vue
             {
                 Service service = (Service)bdgServices.List[bdgServices.Position];
                 if (enCoursDeModifDeveloppeur)
-                {                    
-                    personnel.Nom = txtNom.Text;
-                    personnel.Prenom = txtPrenom.Text;
-                    personnel.Tel = txtTelephone.Text;
-                    personnel.Mail = txtMail.Text;
-                    personnel.Service = service;
-                    controller.UpdatePersonnel(personnel);
+                {
+                    if (MessageBox.Show("Voulez-vous vraiment modifier " + personnel.Nom + " " + personnel.Prenom + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        personnel.Nom = txtNom.Text;
+                        personnel.Prenom = txtPrenom.Text;
+                        personnel.Tel = txtTelephone.Text;
+                        personnel.Mail = txtMail.Text;
+                        personnel.Service = service;
+                        controller.UpdatePersonnel(personnel);
+                    }
                 }
                 else
                 {

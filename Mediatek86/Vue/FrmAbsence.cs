@@ -105,8 +105,7 @@ namespace Mediatek86.vue
         /// <param name="modif"></param>
         private void EnCoursModifAbsence(Boolean modif)
         {
-            enCoursDeMotdifAbsence = modif;
-            grpAbsences.Enabled = !modif;
+            enCoursDeMotdifAbsence = modif;            
             grpActionsAbsence.Text = "modifer une absence";
         }   
         /// <summary>
@@ -125,13 +124,15 @@ namespace Mediatek86.vue
                         Motif motif = (Motif)bdgMotifs.List[bdgMotifs.Position];
                         if (enCoursDeMotdifAbsence)
                         {
-                            Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
-                            absence.Datedebut = dtpDebut.Value;
-                            absence.Datefin = dtpFin.Value;
-                            absence.Motif = motif;
-                            controller.UpdateAbsence(absence, personnel, dateDebut);
-                            EnCoursModifAbsence(false);
-
+                            if (MessageBox.Show("Voulez-vous vraiment modifier : " + dgvAbsences.SelectedRows[0].Cells[3].Value + " du " + ((DateTime)(dgvAbsences.SelectedRows[0].Cells[1].Value)).ToString("dd/MM/yyyy") + " au " + ((DateTime)(dgvAbsences.SelectedRows[0].Cells[2].Value)).ToString("dd/MM/yyyy") + " ?", "Confirmation de suppression", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                            {
+                                Absence absence = (Absence)bdgAbsences.List[bdgAbsences.Position];
+                                absence.Datedebut = dtpDebut.Value;
+                                absence.Datefin = dtpFin.Value;
+                                absence.Motif = motif;
+                                controller.UpdateAbsence(absence, personnel, dateDebut);
+                                EnCoursModifAbsence(false);
+                            }
                         }
                         else if (enCoursAjoutAbsence)
                         {
@@ -230,11 +231,7 @@ namespace Mediatek86.vue
         private void EnCoursAjoutAbsence(Boolean modif)
         {
             enCoursAjoutAbsence = modif;
-            grpAbsences.Enabled = !modif;            
-            grpActionsAbsence.Text = "ajouter une absence";
-            dtpDebut.Value = DateTime.Today;
-            dtpFin.Value = DateTime.Today;
-            cboMotifs.SelectedItem = cboMotifs.Items[0];            
+            grpActionsAbsence.Text = "ajouter une absence";                     
         }
         /// <summary>
         /// Controle d'absences simultanées
